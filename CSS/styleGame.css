@@ -1,0 +1,117 @@
+.logo-container-game{
+    width: 90px;
+    height: 120px;
+    margin: 10px auto;
+}
+
+.user-game-container{
+    display: flex;
+    position: relative;
+    bottom: 30px;
+    justify-content: space-between;
+}
+
+.user-game-container h2{
+    margin: 0;
+    font-size: 20px;
+    color: #FFFFFF;
+    position: relative;
+    margin: auto;
+    margin-left: 10px; 
+}
+
+.user-game-container h3{
+    margin: 0;
+    font-size: 20px;
+    color: #FFFFFF;
+    position: relative;
+    margin: auto;
+    margin-right: 10px;
+}
+
+.user-game-container h4{
+    margin: 0;
+    font-size: 20px;
+    color: #FFFFFF;
+    position: relative;
+    margin: auto 0;
+    
+}
+
+.user-game-container i{
+    color:#04bd7d ;
+    margin: auto 0; 
+}
+
+.head-game{
+    border-color:  #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+
+}
+
+.left-arm{
+    width: 10%;
+    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 62%;
+    bottom: 160px;
+
+}
+
+.right-arm{
+    width: 10%;
+    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 72%;
+    bottom: 164px;
+
+}
+
+.left-leg{
+    width: 10%;
+    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 72%;
+    bottom: 155px;
+
+}
+
+.right-leg{
+    width: 10%;
+    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 62%;
+    bottom: 159px;
+}
+
+.select-letter{
+    width: 98%;
+    height: 110px;
+    padding: 1% 1%;
+    position: relative;
+    background-color: #515966;
+    margin: 15px 0 0 0;
+    border-radius: 3px;
+    display: flex;
+}
+
+.select-letter p1{
+    color: #FFFFFF;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+.select-letter p2{
+    color: #FFFFFF;
+    text-align: left;
+    align-items: center;
+    display: flex;
+    margin: 0px 10px;
+}
+
+.selected-word{
+    width: 98%;
+    height: 50px;
+    padding: 1% 1%;
+    position: relative;
+    background-color: #515966;
+    margin: 15px 0 0 0;
+    border-radius: 3px;
+    display: flex;
+}

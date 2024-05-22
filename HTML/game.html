@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/styleMain.css">
+    <link rel="stylesheet" href="/CSS/styleGame.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body onload="changeUser()">
+    <div class = "container">
+        <div class="form-content">
+            <div class = "header">
+                <div class="user-game-container">
+                    <i class="fa-solid fa-user fa-game"></i>
+                    <h2 id = "user-name-game">user-name</h2>
+                    <h3 id = "score-game">Puntaje: </h3>
+                    <h4 id = "score-game-points">0</h4>
+                </div>
+                <div class="logo-container-game">
+                    <div class="logo-game">
+                        <div class ="hline-main"></div>
+                        <div class ="vline-main"></div>
+                        <div class ="hline-bottom-main"></div>
+                        <div class ="vline-game-main"></div>
+                        <div class ="vline-main-rope"></div>
+                        <div class ="head head-game"></div>
+                        <div class ="arm left-arm"></div>
+                        <div class ="arm right-arm"></div>
+                        <div class ="leg left-leg"></div>
+                        <div class ="leg right-leg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="selected-word">
+                <p>ACA VAN LAS CASILLAS DE PALABRA</p>
+            </div>
+            <form>
+                <div class="input-group input-group-letter ">
+                    <div class="input-field" id="selectLetterInput">
+                        <input class="input" id="selectLetter" type="text" placeholder="Ingrese una letra">
+                    </div>
+                    <div class="warning-container warning-letter">
+                        <p id="warning-letter-announce"></p>
+                    </div>
+                </div>
+                <div class="btn-submit btn-submit-letter">
+                    <button id="submit submit-letter" type="button" onclick=' sendLetter();'>Enviar</button>
+                </div>
+            </form>
+            <div class="select-letter">
+                <p1>Letras seleccionadas</p1>
+                <p2>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a</p2>
+            </div>
+        </div>
+    </div>
+    <script src="/JS/script.js"></script>
+</body>
+</html>
