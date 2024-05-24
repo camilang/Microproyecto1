@@ -103,6 +103,7 @@
     align-items: center;
     display: flex;
     margin: 0px 10px;
+    font-size: 13px;
 }
 
 .selected-word{
@@ -113,5 +114,31 @@
     background-color: #515966;
     margin: 15px 0 0 0;
     border-radius: 3px;
+}
+
+.container-letter-word {
+    width: 100%;
+    height: 70%;
     display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.container-letter-word-space{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hline-word{
+    width: 20%;
+    margin-top: auto;
+}
+
+.container-letter-word-div{
+    width: 20%;
+    margin: auto 0;
+    color: #FFFFFF;
+    font-size: 30px;
 }
