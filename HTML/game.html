@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/CSS/styleGame.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body onload="changeUser()">
+<body onload="changeUser()" >
     <div class = "container">
         <div class="form-content">
             <div class = "header">
@@ -33,27 +33,10 @@
                         <div class ="leg right-leg"></div>
                     </div>
                 </div>
-            </div>
             <div class="selected-word">
                 <div class="container-letter-word">
-                    <div class="container-letter-word-div">
-                        <p1 id="letter-1">H</p1>
-                    </div>
-                    <div class="container-letter-word-div">
-                        <p1 id="letter-2">O</p1>
-                    </div>
-                    <div class="container-letter-word-div">
-                        <p1 id="letter-3">L</p1>
-                    </div>
-                    <div class="container-letter-word-div">
-                        <p1 id="letter-4">A</p1>
-                    </div>
                 </div>
                 <div class="container-letter-word-space">
-                    <div class ="hline-main hline-word"></div>
-                    <div class ="hline-main hline-word"></div>
-                    <div class ="hline-main hline-word"></div>
-                    <div class ="hline-main hline-word"></div>
                 </div>
             </div>
             <form>
@@ -71,7 +54,7 @@
             </form>
             <div class="select-letter">
                 <p1>Letras seleccionadas</p1>
-                <p2>a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a</p2>
+                <p2 id="sl"></p2>
             </div>
         </div>
     </div>
