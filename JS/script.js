@@ -1,3 +1,8 @@
+
+/*Validar el formulario de iniciar sesion.
+Modificar estetica del input en caso de un mal ingreso
+Crear entidades del localStorage
+*/
 function sendForm(){
     localStorage.setItem("record","[]");
     localStorage.setItem("games",0);
@@ -15,20 +20,28 @@ function sendForm(){
         }
     }
 
+/*Cambiar el username de la vista al dado por el usuario*/
+
 function changeTitle(){
     document.getElementById("user-name").innerHTML = localStorage.getItem("user");
 }
 
+
+/*Iniciar la pantalla de juego*/
 function startGame(){
     window.location.href = "../HTML/game.html";
     return true
     }
 
+
+//Regresar a la pantalla indice (cerrar sesion)
 function backIndex(){
     window.location.href = "../HTML/index.html";
     return true
     }
 
+/*Cambiar el nombre de usuario visto en la pantalla del juego. 
+Agregar nuevos atributos al local storage para las funcionalidades del juego*/
 function changeUser(){
     document.getElementById("user-name-game").innerHTML = localStorage.getItem("user");
     localStorage.setItem("SL","");
@@ -39,8 +52,10 @@ function changeUser(){
     addLetterDivGame();
     }
 
-
-
+/*Tomar la letra introducida por el usuario y validar:
+-Se trata de una letra
+-La letra no fue seleccionada antes
+*/
 function sendLetter(){
     document.getElementById("warning-letter-announce").innerHTML = "";
     let letter = document.getElementById("selectLetter").value;
@@ -55,7 +70,8 @@ function sendLetter(){
     document.getElementById("selectLetter").value = "";
     }
 
-
+/*Agregar un intento
+*/
 function addAttend(){
     let a = parseInt(localStorage.getItem("attend"));
     a++;
@@ -69,7 +85,8 @@ function validateLetterInput(){
 
 }
 
-
+/*Agregar una letra nueva a la lista de letras ya dichas por el usuario
+*/
 function addLetterToList(lett){
     let letter = lett.toLowerCase();
     console.log(letter);
@@ -104,6 +121,9 @@ function addLetterToList(lett){
     }
 }
 
+/*dividir la palabra del juego en espacios y posicionarlo en el juego dinamicamente segun el numero de letras
+*/
+
 function addLetterDivGame(){
     chooseWord();
     const word = addDivisionWord();
@@ -122,6 +142,8 @@ function addLetterDivGame(){
         document.getElementById("container-letter-word-space").appendChild(section4);
     }
 }
+
+//Validar si la letra introducida por el usuario pertenece a la palabra del juego. La letra cambia de color en caso de ser descubierta
 
 function validateLetterWord(letter){
 
@@ -165,6 +187,8 @@ function validateLetterWord(letter){
     }
 }
 
+//Dibujar el ahorcado cada intento fallido por el usuario
+
 function drawMan(){
     let strikes = localStorage.getItem("strikes");
     if(strikes == 0 ){
@@ -192,6 +216,7 @@ function drawMan(){
     localStorage.setItem("strikes",strikes);
 }
 
+//Modificar la clase CSS del ahorcado para que se vaya dibujando
 function changeColorMan(bpart, cl1, cl2){
     document.getElementById(bpart).classList.add(cl2);
     document.getElementById(bpart).classList.remove(cl1);
@@ -225,11 +250,14 @@ function addDivisionWord() {
 
 }
 
+//Funcion salir al menu principal
 function exit(){
     window.location.href = "../HTML/main.html";
     return true
 }
 
+
+//Datos modificados en la vista pos juego para conocer el resultado
 function endPage(){
     document.getElementById("title").innerHTML = localStorage.getItem("title");
     document.getElementById("user-name").innerHTML = localStorage.getItem("user");
@@ -237,6 +265,7 @@ function endPage(){
     document.getElementById("pt").innerHTML = "Puntaje: "+ localStorage.getItem("point");
 }
 
+//guardar los datos de la partida jugada en un diario de puntajes
 function saveRecord(){
     let p = {
         partida: "Partida "+ localStorage.getItem('games'),
@@ -261,10 +290,14 @@ function saveRecord(){
     
 }
 
+
+//abrir la pantalla de resultados
 function seeBoard(){
     window.location.href = "../HTML/board.html";
     return true
 }
+
+//Rellenar la tabla de resultados con la informacion del diario de resultados
 
 function actTable(){
     const data = JSON.parse(localStorage.getItem("record"));
