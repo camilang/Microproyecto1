@@ -26,19 +26,24 @@
                         <div class ="hline-bottom-main"></div>
                         <div class ="vline-game-main"></div>
                         <div class ="vline-main-rope"></div>
-                        <div class ="head head-game"></div>
-                        <div class ="arm left-arm"></div>
-                        <div class ="arm right-arm"></div>
-                        <div class ="leg left-leg"></div>
-                        <div class ="leg right-leg"></div>
+                        <div id ="head" class ="head head-game"></div>
+                        <div id = "body" class ="body body-game"></div>
+                        <div id ="left-arm" class ="arm left-arm"></div>
+                        <div id ="right-arm" class ="arm right-arm"></div>
+                        <div id ="left-leg" class ="leg left-leg"></div>
+                        <div id ="right-leg" class ="leg right-leg"></div>
                     </div>
                 </div>
-            <div class="selected-word">
-                <div class="container-letter-word">
+                <div class="selected-word">
+                    <div class="container-letter-word" id = "container-letter-word">
+                        <div class="container-letter-word-div" id="container-letter-word-div">
+                            <p1 class = "letter-a" id="letter-1"></p1>
+                        </div>
+                    </div>
+                    <div id = "container-letter-word-space" class="container-letter-word-space">
+                        <div class ="hline-main hline-word" id ="hline-main hline-word"></div>
+                    </div>
                 </div>
-                <div class="container-letter-word-space">
-                </div>
-            </div>
             <form>
                 <div class="input-group input-group-letter ">
                     <div class="input-field" id="selectLetterInput">
@@ -56,6 +61,15 @@
                 <p1>Letras seleccionadas</p1>
                 <p2 id="sl"></p2>
             </div>
+            <div class="btt-option-container">
+                <div class="btn-submit btn-submit-letter btt-opt">
+                    <button id="submit submit-letter" type="button" onclick=' startGame();'>Reiniciar</button>
+                </div>
+                <div class="btn-submit btn-submit-letter btt-opt">
+                    <button id="submit submit-letter" type="button" onclick=' exit();'>Salir</button>
+                </div>
+            </div>
+            
         </div>
     </div>
     <script src="/JS/script.js"></script>

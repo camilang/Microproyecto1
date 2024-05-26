@@ -44,40 +44,46 @@
 }
 
 .head-game{
-    border-color:  #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    border-color:  #2C2f35; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
 
 }
 
 .left-arm{
     width: 10%;
-    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
-    left: 62%;
-    bottom: 160px;
+    background: #2C2f35;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 61%;
+    bottom: 145px;
 
 }
 
 .right-arm{
     width: 10%;
-    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
-    left: 72%;
-    bottom: 164px;
+    background: #2C2f35; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 75%;
+    bottom: 149px;
 
 }
 
 .left-leg{
     width: 10%;
-    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
-    left: 72%;
-    bottom: 155px;
+    background: #2C2f35; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 75%;
+    bottom: 135px;
 
 }
 
 .right-leg{
     width: 10%;
-    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
-    left: 62%;
-    bottom: 159px;
+    background: #2C2f35;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 61%;
+    bottom: 139px;
 }
+
+.body-game{
+    background: #2C2f35;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+}
+
+
 
 .select-letter{
     width: 98%;
@@ -132,13 +138,72 @@
 }
 
 .hline-word{
-    width: 20%;
-    margin-top: auto;
+    width: 16%;
+    margin: auto 3px;
 }
 
 .container-letter-word-div{
-    width: 20%;
+    width: 16%;
     margin: auto 0;
-    color: #ffffff;
     font-size: 30px;
+}
+
+.letter-a{
+    color: #515966;
+}
+
+.letter-b{
+    color: #FFFFFF;
+}
+
+
+.head-game-lost{
+    border-color:  #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+
+}
+
+.left-arm-lost{
+    width: 10%;
+    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 61%;
+    bottom: 145px;
+
+}
+
+.right-arm-lost{
+    width: 10%;
+    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 75%;
+    bottom: 149px;
+
+}
+
+.left-leg-lost{
+    width: 10%;
+    background: #04bd7d; /*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 75%;
+    bottom: 135px;
+
+}
+
+.right-leg-lost{
+    width: 10%;
+    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+    left: 61%;
+    bottom: 139px;
+}
+
+.body-game-lost{
+    background: #04bd7d;/*#2C2f35 cuando se empiece a jugar para que desaparezca*/
+}
+
+
+.btt-option-container{
+    margin-top: 15px;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.btt-opt{
+    width: 40%;
 }

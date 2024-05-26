@@ -66,7 +66,7 @@ body{
 
 .vline-main-rope{
     width: 4px;
-    height: 70px;
+    height: 20px;
     border-radius: 3px;
     background: #04bd7d;
     position: relative;
@@ -80,10 +80,20 @@ body{
     border-radius: 3px;
     background: #2C2f35;
     position: relative;
-    bottom: 170px;
+    bottom: 120px;
     left: 57%;
     border-radius: 50%;
     border: 4px solid #04bd7d;
+}
+
+.body{
+    width: 4px;
+    height: 30px;
+    border-radius: 3px;
+    background: #04bd7d;
+    position: relative;
+    bottom: 123px;
+    left: 70%;
 }
 
 .arm{
@@ -93,7 +103,7 @@ body{
     background: #04bd7d;
     left: 62%;
     position: relative;
-    bottom: 160px;
+    bottom: 140px;
 }
 
 .leg{
@@ -103,5 +113,10 @@ body{
     background: #04bd7d;
     left: 62%;
     position: relative;
-    bottom: 148px;
+    bottom: 130px;
+}
+
+.table{
+    width: 100%;
+    color: white;
 }

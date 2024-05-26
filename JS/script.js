@@ -1,4 +1,6 @@
 function sendForm(){
+    localStorage.setItem("record","[]");
+    localStorage.setItem("games",0);
     const name = document.getElementById("name").value;
     if(name != ""){
         window.location.href = "../HTML/main.html";
@@ -17,7 +19,6 @@ function changeTitle(){
 
 function startGame(){
     window.location.href = "../HTML/game.html";
-    console.log(createScriptsHangman("hola"))
     return true
     }
 
@@ -28,6 +29,11 @@ function backIndex(){
 
 function changeUser(){
     document.getElementById("user-name-game").innerHTML = localStorage.getItem("user");
+    localStorage.setItem("SL","");
+    localStorage.setItem("strikes",0);
+    localStorage.setItem("point",0);
+    localStorage.setItem("target",0);
+    addLetterDivGame();
     }
 
 
@@ -36,15 +42,144 @@ function sendLetter(){
     document.getElementById("warning-letter-announce").innerHTML = "";
     let letter = document.getElementById("selectLetter").value;
     if(letter != "" && (String(letter)).length == 1 ) {
-        console.log(letter)}else{
-            document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra";
+        addLetterToList(letter);
+        document.getElementById("sl").innerHTML = localStorage.getItem("SL");
+    }else{
+            document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra valida";
         }
     document.getElementById("selectLetter").value = "";
     }
 
+
+function addLetterToList(lett){
+    let letter = lett.toLowerCase();
+    console.log(letter);
+    let abc = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+    let repetitiveLetter = false;
+    let aLetter = false;
+
+    const larray = localStorage.getItem("SL").split(", ");
+
+    larray.forEach(i => {
+        if(i == letter ){
+            repetitiveLetter = true;
+        }
+    });
+
+    abc.forEach(i => {
+        if(i == letter ){
+            aLetter = true;
+        }
+    });
+
+    if( !repetitiveLetter && aLetter){
+        let letters = localStorage.getItem("SL");
+        l = letters + letter + ", ";
+        localStorage.setItem("SL",l);
+        validateLetterWord(letter);
+    }else{
+        document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra valida"
+    }
+}
+
+function addLetterDivGame(){
+    chooseWord();
+    const word = addDivisionWord();
+    const warray = word.split("-");
+    document.getElementById("letter-1").innerHTML = warray[0];
+    for (let i = 1; i < warray.length; i++) {
+
+        const section = document.getElementById("container-letter-word-div");
+        let section2 = section.cloneNode(true);
+        section2.innerHTML = '<p1 class = "letter-a" id="letter-'+(i+1)+'">' +warray[i]+ '</p1>' ;
+
+        const section3 = document.getElementById("hline-main hline-word");
+        const section4 = section3.cloneNode(true);
+
+        document.getElementById("container-letter-word").appendChild(section2);
+        document.getElementById("container-letter-word-space").appendChild(section4);
+    }
+}
+
+function validateLetterWord(letter){
+
+    const word = addDivisionWord();
+    const a = word.split("-");
+    let aux = 0;
+    
+
+    for (let i = 0; i < a.length; i++) {
+        if(a[i] == letter){
+            console.log("letter-"+(i+1));
+            document.getElementById("letter-"+(i+1)).classList.add("letter-b");
+            document.getElementById("letter-"+(i+1)).classList.remove("letter-a");
+            aux++;
+            let point = parseInt(localStorage.getItem("point")) + 10;
+            localStorage.setItem("point", point)
+            document.getElementById("score-game-points").innerText = point;
+
+            let target = parseInt(localStorage.getItem("target")) + 1;
+            localStorage.setItem("target", target);
+            if(target == a.length){
+                localStorage.setItem("title", "HAS GANADO");
+                localStorage.setItem("msj", "😇😇😇");
+                window.location.href = "../HTML/end.html";
+                localStorage.setItem("state", "GANADOR")
+                let record = [localStorage.getItem("user"), localStorage.getItem("point"),  localStorage.getItem("state")];
+                localStorage.setItem("games",parseInt(localStorage.getItem("games"))+1);
+                saveRecord();
+            }
+        }
+        
+    }
+
+    if(aux == 0){
+        drawMan();
+        if(parseInt(localStorage.getItem("point")) > 0){
+            let point = parseInt(localStorage.getItem("point")) - 5;
+            localStorage.setItem("point", point)
+            document.getElementById("score-game-points").innerText = point;
+        }
+    }
+}
+
+function drawMan(){
+    let strikes = localStorage.getItem("strikes");
+    if(strikes == 0 ){
+        changeColorMan("head", "head-game", "head-game-lost")
+    }else if(strikes == 1){
+        changeColorMan("body", "body-game", "body-game-lost")
+    }else if(strikes == 2){
+        changeColorMan("left-arm", "left-arm", "left-arm-lost")
+    }else if(strikes == 3){
+        changeColorMan("right-arm", "right-arm", "right-arm-lost")
+    }else if(strikes == 4){
+        changeColorMan("left-leg", "left-leg", "left-leg-lost")
+    }else if(strikes == 5){
+        changeColorMan("right-leg", "right-leg", "right-leg-lost")
+        window.location.href = "../HTML/end.html";
+        localStorage.setItem("title", "HAS PERDIDO");
+        localStorage.setItem("msj", "😈😈😈");
+        localStorage.setItem("state", "PERDEDOR");
+        let record = [localStorage.getItem("user"), localStorage.getItem("point"),  localStorage.getItem("state")];
+        localStorage.setItem("games",parseInt(localStorage.getItem("games"))+1);
+        saveRecord();
+
+    }
+    strikes++;
+    localStorage.setItem("strikes",strikes);
+}
+
+function changeColorMan(bpart, cl1, cl2){
+    document.getElementById(bpart).classList.add(cl2);
+    document.getElementById(bpart).classList.remove(cl1);
+}
+
+
 //Funcion para escoger una palabra al azar 
 function chooseWord(){
-    const Wordlist = ["manzana", "naranja", "banana", "uva", "pera", "limón", "piña", "fresa", "frambuesa", "arándano", "kiwi", "mango", "melocotón", "cereza", "sandía"];
+    const Wordlist = ["manzana", "naranja", "banana", "uva", "pera", "limon", "piña", "fresa", "frambuesa", "arandano", "kiwi", "mango", "melocoton", "cereza", "sandia"];
      // Obtener un índice aleatorio dentro del rango de la longitud de la lista
     var randomIndex  = Math.floor(Math.random() * Wordlist.length);
     // Almacenar un valor
@@ -53,85 +188,78 @@ function chooseWord(){
 
 
 //Funcion para convertir una palabra en guiones
-function createScriptsHangman() {
-    //Primero obtengo el localStorage con la palabra seleccionada
-    const word = localStorage.getItem('word');
-    // Convertir la palabra a minúsculas
+function addDivisionWord() {
+
+    let word = localStorage.getItem('word');
     word = word.toLowerCase();
-    // Inicializar un array vacío para almacenar los guiones
     let scripts = [];
-    // Recorrer cada letra de la palabra
     for (let i = 0; i < word.length; i++) {
-        scripts.push("_");
+        
+        if(i>0){
+            scripts.push("-");
+        }
+        scripts.push(word[i]);
     }
-    // Unir los guiones en una cadena de texto y devolverla
     return scripts.join("");
+
 }
 
-//Funcion para colocar los pisos de la palabra en la pantalla
-function scripts(){
-    //Primero obtengo el localStorage con la palabra seleccionada
-    const word = localStorage.getItem('word');
-    //Convierto la palabra en guiones
-    const wordscripts= createScriptsHangman(word);
-    const newScripts = document.getElementsByClassName("container-letter-word-space");
-    newScripts.innerHTML= wordscripts ;
+function exit(){
+    window.location.href = "../HTML/main.html";
+    return true
 }
 
-//Funcion para saber si una letra esta en una palabra 
-function verifyLetterWord() {
-    //Primero obtengo el localStorage con la palabra seleccionada
-    const word = localStorage.getItem('word');
-    let letterselected = document.getElementById("selectLetter");
-    let letter = letterselected.value;
-    // Convertir la palabra y la letra a minúsculas para ignorar mayúsculas/minúsculas
-    word = word.toLowerCase();
-    letter = letter.toLowerCase();
-    //Busco la palabra en guiones del juego
-    let scripts = document.getElementById("container-letter-word-space");
-    let newWord="";
-    var point=0;
-    // Recorrer la palabra letra por letra
-    for (let i = 0; i < word.length; i++) 
-        //Si la palabra en una posicion es igual a la letra seleccionada
-        { if (word[i] === letter) {
-        //La constante newWord se convierte en la palabra en guiones que ya se tenia pero con la nueva letra encontrada
-        newWord=changeLetter(scripts,i,letter);
-        //Cambia el texto del contenedor de letras por la newWord
-        scripts.innerText=newWord;
-        //La constante de puntos aumenta por cada letra encontrada
-        point+=1;
-         // Almacenar un valor
-        localStorage.setItem('points', point);
+function endPage(){
+    document.getElementById("title").innerHTML = localStorage.getItem("title");
+    document.getElementById("user-name").innerHTML = localStorage.getItem("user");
+    document.getElementById("msj").innerHTML = localStorage.getItem("msj");
+    document.getElementById("pt").innerHTML = "Puntaje: "+ localStorage.getItem("point");
+}
+
+function saveRecord(){
+    let p = {
+        partida: "Partida "+ localStorage.getItem('games'),
+        nombre:  localStorage.getItem('user'),
+        puntos: localStorage.getItem('point'),
+        resultado: localStorage.getItem('state')
+    }
+
+    
+    const jsonString = JSON.stringify(p);
+    const ls = localStorage.getItem("record");
+    lss = ls.substring(0,ls.length-1);
+    if(parseInt(localStorage.getItem("games")) == 1){
+        const load = lss + jsonString + "]";
+        localStorage.setItem("record",load);
     }else{
-        //Si la letra no es conseguida en esa posicion entonces queda igual
-        scripts.innerText=newWord;
-        point-=1;
-        //Aca va una funcion para mostrar el personaje
-        localStorage.setItem('points', point);
+        const load =  lss + "," + jsonString + "]";
+        localStorage.setItem("record",load);
     }
-    }
+    
+    
+    
 }
 
-//Funcion para cambiar un piso por una letra
-function changeLetter(word, index, newLetter) {
-    // Convertir en un array de caracteres
-    let charArray = word.split('');
-    // Remplazar la letra en el indice especificado
-    charArray[index] = newLetter;
-    // Unir todo en un string
-    let modifiedWord = charArray.join('');
-    return modifiedWord;
+function seeBoard(){
+    window.location.href = "../HTML/board.html";
+    return true
 }
 
-//Funcion para mostrar las letras ingresadas
-function showSelectedLetters(){
-    //Constante que tiene el valor ingresado en el input
-    let letterInput = document.getElementById("selectLetter");
-    let selectedLetter = letterInput.value;
-    //Cambiar el texto con la nueva letra ingresada, buscando el campo donde se colocan dichas letras y revisando cuales ya estan
-    let sl = document.getElementById("sl");
-    //Colocar el texto que estaba y la nueva letra
-    sl.innerText= sl+" "+selectedLetter;
-}
+function actTable(){
+    const data = JSON.parse(localStorage.getItem("record"));
+    let aux = 4;
+    let a = 0;
 
+    data.forEach(i => {
+        console.log(i)
+        const section = document.getElementById("header-table");
+        console.log(section)
+        let section2 = section.cloneNode(true);
+        section2.innerHTML = '<th class = id="c'+(aux++)+'">' +data[a]["partida"]+ '</th>' + '<th class = id="c'+(aux++)+'">' +data[a]["puntos"]+ '</th>'+'<th class = id="c'+(aux++)+'">' +data[a++]["resultado"]+ '</th>';
+        
+        document.getElementById("table").appendChild(section2);
+    });
+
+
+
+}
