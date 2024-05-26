@@ -80,6 +80,13 @@ body{
     align-items: center;
 }
 
+
+.input-fail{
+    background-color: #b26666;
+    box-shadow: 1px 1px 5px #660202;
+}
+
+
 input{
     width: 100%;
     background: transparent;
@@ -108,6 +115,7 @@ input::placeholder{
     width: 100%;
     height: 30px;
     position: relative;
+    margin-top: 6px;
 }
 
 .warning-container p{

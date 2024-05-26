@@ -6,9 +6,11 @@ function sendForm(){
         window.location.href = "../HTML/main.html";
         document.getElementById("name").innerHTML = "";
         localStorage.setItem("user",name);
+        document.getElementById("nameInput").classList.remove("input-fail");
     return true}else{
             document.getElementById("warning").innerHTML = "Ingrese un usuario válido";
             document.getElementById("name").innerHTML = "";
+            document.getElementById("nameInput").classList.add("input-fail");
             return false;
         }
     }
@@ -33,6 +35,7 @@ function changeUser(){
     localStorage.setItem("strikes",0);
     localStorage.setItem("point",0);
     localStorage.setItem("target",0);
+    localStorage.setItem("attend",0);
     addLetterDivGame();
     }
 
@@ -42,13 +45,29 @@ function sendLetter(){
     document.getElementById("warning-letter-announce").innerHTML = "";
     let letter = document.getElementById("selectLetter").value;
     if(letter != "" && (String(letter)).length == 1 ) {
+        addAttend()
         addLetterToList(letter);
         document.getElementById("sl").innerHTML = localStorage.getItem("SL");
+        
     }else{
-            document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra valida";
+        validateLetterInput();
         }
     document.getElementById("selectLetter").value = "";
     }
+
+
+function addAttend(){
+    let a = parseInt(localStorage.getItem("attend"));
+    a++;
+    localStorage.setItem("attend",a);
+    document.getElementById("attend-nmr").innerText = localStorage.getItem("attend")
+}
+
+function validateLetterInput(){
+    document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra valida";
+    document.getElementById("selectLetterInput").classList.add("input-fail");
+
+}
 
 
 function addLetterToList(lett){
@@ -78,8 +97,10 @@ function addLetterToList(lett){
         l = letters + letter + ", ";
         localStorage.setItem("SL",l);
         validateLetterWord(letter);
+        document.getElementById("selectLetterInput").classList.remove("input-fail");
     }else{
         document.getElementById("warning-letter-announce").innerHTML = "Ingrese una letra valida"
+        document.getElementById("selectLetterInput").classList.add("input-fail");
     }
 }
 

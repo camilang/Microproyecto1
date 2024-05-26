@@ -207,3 +207,7 @@
 .btt-opt{
     width: 40%;
 }
+
+.container-header-att{
+    display: flex;
+}
