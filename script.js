@@ -8,7 +8,7 @@ function sendForm(){
     localStorage.setItem("games",0);
     const name = document.getElementById("name").value;
     if(name != ""){
-        window.location.href = "../HTML/main.html";
+        window.location.href = "main.html";
         document.getElementById("name").innerHTML = "";
         localStorage.setItem("user",name);
         document.getElementById("nameInput").classList.remove("input-fail");
@@ -29,14 +29,14 @@ function changeTitle(){
 
 /*Iniciar la pantalla de juego*/
 function startGame(){
-    window.location.href = "../HTML/game.html";
+    window.location.href = "game.html";
     return true
     }
 
 
 //Regresar a la pantalla indice (cerrar sesion)
 function backIndex(){
-    window.location.href = "../HTML/index.html";
+    window.location.href = "index.html";
     return true
     }
 
@@ -167,7 +167,7 @@ function validateLetterWord(letter){
             if(target == a.length){
                 localStorage.setItem("title", "HAS GANADO");
                 localStorage.setItem("msj", "😇😇😇");
-                window.location.href = "../HTML/end.html";
+                window.location.href = "end.html";
                 localStorage.setItem("state", "GANADOR")
                 let record = [localStorage.getItem("user"), localStorage.getItem("point"),  localStorage.getItem("state")];
                 localStorage.setItem("games",parseInt(localStorage.getItem("games"))+1);
@@ -203,7 +203,7 @@ function drawMan(){
         changeColorMan("left-leg", "left-leg", "left-leg-lost")
     }else if(strikes == 5){
         changeColorMan("right-leg", "right-leg", "right-leg-lost")
-        window.location.href = "../HTML/end.html";
+        window.location.href = "end.html";
         localStorage.setItem("title", "HAS PERDIDO");
         localStorage.setItem("msj", "😈😈😈");
         localStorage.setItem("state", "PERDEDOR");
@@ -252,7 +252,7 @@ function addDivisionWord() {
 
 //Funcion salir al menu principal
 function exit(){
-    window.location.href = "../HTML/main.html";
+    window.location.href = "main.html";
     return true
 }
 
@@ -293,7 +293,7 @@ function saveRecord(){
 
 //abrir la pantalla de resultados
 function seeBoard(){
-    window.location.href = "../HTML/board.html";
+    window.location.href = "board.html";
     return true
 }
 
